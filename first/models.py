@@ -24,10 +24,8 @@ class Vehicle(models.Model):
     climate = models.CharField(blank=True, choices=CLIMATE_CHOICES, max_length=120, null=True)
     weight = models.IntegerField(blank=True, help_text="Kg", null=True)
     passengers = models.IntegerField(blank=True, null=True)
-    attachments = models.FileField(blank=True,  null=True)
+    attachments = models.FileField(blank=True, null=True)
     comment = models.TextField(blank=True, max_length=300, null=True)
-
 
     def __ser__(self):
         return self.name
-

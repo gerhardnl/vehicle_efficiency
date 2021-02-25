@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+
 from first.views import home, add_vehicle, update_vehicle, delete_vehicle
 
 urlpatterns = [

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
+
 from first.models import Vehicle
-from first.templates.forms import New_vehicle, FileFieldForm
+from first.templates.forms import New_vehicle
 
 
 def home(request):
@@ -29,6 +30,7 @@ def update_vehicle(request, pk):
             return redirect('/')
     context = {'new_vehicle': up_vehicle}
     return render(request, "add_vehicle.html", context)
+
 
 def delete_vehicle(request, pk):
     new_vehicle = Vehicle.objects.get(id=pk)

@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -20,7 +19,10 @@ class Migration(migrations.Migration):
                 ('engine', models.FloatField(blank=True, help_text='Engine size in liter', null=True)),
                 ('fuel', models.CharField(blank=True, help_text='Eks: Electric, Diesel', max_length=120, null=True)),
                 ('drag', models.FloatField(blank=True, help_text='Newtons', null=True)),
-                ('climate', models.CharField(blank=True, choices=[('Tropical', 'Tropical'), ('Dry', 'Dry'), ('Temperate', 'Temperate'), ('Continental', 'Continental'), ('Polar', 'Polar')], max_length=120, null=True)),
+                ('climate', models.CharField(blank=True, choices=[('Tropical', 'Tropical'), ('Dry', 'Dry'),
+                                                                  ('Temperate', 'Temperate'),
+                                                                  ('Continental', 'Continental'), ('Polar', 'Polar')],
+                                             max_length=120, null=True)),
                 ('weight', models.IntegerField(blank=True, help_text='Kg', null=True)),
                 ('passengers', models.IntegerField(blank=True, null=True)),
                 ('attachments', models.FileField(blank=True, null=True, upload_to='')),
