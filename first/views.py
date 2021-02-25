@@ -12,7 +12,7 @@ def home(request):
 def add_vehicle(request):
     new_vehicle = New_vehicle()
     if request.method == 'POST':
-        new_vehicle = New_vehicle(request.POST, request.FILES.getlist())
+        new_vehicle = New_vehicle(request.POST)
         if new_vehicle.is_valid():
             new_vehicle.save()
             return redirect('/')
