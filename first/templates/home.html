@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<br>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Name</th>
+                    <th>Mode Of Transport</th>
+                    <th>Engine</th>
+                    <th>Fuel</th>
+                    <th>Drag</th>
+                    <th>Climate</th>
+                    <th>Wight</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+                {% for i in vehicles %}
+                <tr>
+                    <td>{{i.name}}</td>
+                    <td>{{i.mode_of_transport}}</td>
+                    <td>{{i.engine}}</td>
+                    <td>{{i.fuel}}</td>
+                    <td>{{i.drag}}</td>
+                    <td>{{i.climate}}</td>
+                    <td>{{i.weight}}</td>
+                    <td><a class="btn btn-sm btn-info" href="{% url 'up' i.id %}">Update</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'del' i.id %}">Delete</a></td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

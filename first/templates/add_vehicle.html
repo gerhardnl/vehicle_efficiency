@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+{% block content %}
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for i in new_vehicle %}
+                    {{i.name.capitalize}}
+                    <p class="col fst-italic text-muted" >
+                        {{i}}
+                        {{i.help_text}}
+                    </p>
+
+                    <hr>
+                {% endfor %}
+
+                <input type="submit" value="Save" name="_save">
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
