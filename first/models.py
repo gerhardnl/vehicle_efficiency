@@ -34,7 +34,7 @@ class Vehicle(models.Model):
     def __ser__(self):
         return self.name
 
-
+"""Her opprettes nye Token hver gang det lages en ny bruker"""
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def testingtesting(sender, instance=None, created=False, **kwargs):
     if created:

@@ -99,6 +99,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+"""AUTHENTICATION lagrer nye Token
+PERMISSION sjekker at gitt Token stemmer opp mot databasen"""
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',

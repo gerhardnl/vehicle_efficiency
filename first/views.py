@@ -6,7 +6,8 @@ from rest_framework.permissions import IsAuthenticated
 from first.models import Vehicle
 from first.templates.forms import New_vehicle
 
-
+"""Her sjekker `IsAuthenticated` at Token som blir gitt er i databasen. 
+Og retunerer en json liste med kjoretoy som er implementert"""
 @api_view(['GET'])
 @permission_classes((IsAuthenticated,))
 def home(request):
