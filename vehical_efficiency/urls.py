@@ -14,15 +14,39 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth.models import User
 from django.urls import path
+from rest_framework import routers, serializers, viewsets
 
 from first.views import home, add_vehicle, update_vehicle, delete_vehicle
 
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ['url', 'username', 'email', 'is_staff']
+
+
+# ViewSets define the view behavior.
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+
+# Wire up our API using automatic URL routing.
+# Additionally, we include login URLs for the browsable API.
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name="home"),
+    path('test/', home),
+    path('', add_vehicle, name="home"),
     path('add_vehicle/', add_vehicle, name="add"),
     path('up_vehicle/<str:pk>/', update_vehicle, name="up"),
     path('delete_vehicle/<str:pk>/', delete_vehicle, name="del"),
+    # path('api/', TestView.api_test)
 
 ]

@@ -1,12 +1,20 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
+from rest_framework.decorators import permission_classes, api_view
+from rest_framework.permissions import IsAuthenticated
 
 from first.models import Vehicle
 from first.templates.forms import New_vehicle
 
 
+@api_view(['GET'])
+@permission_classes((IsAuthenticated,))
 def home(request):
-    vehicles = Vehicle.objects.all()
-    return render(request, "home.html", {'vehicles': vehicles})
+    data = list(Vehicle.objects.values())
+    return JsonResponse({'data': data})
+
+    # vehicles = Vehicle.objects.all()
+    # return render(request, "home.html", {'vehicles': vehicles})
 
 
 def add_vehicle(request):
